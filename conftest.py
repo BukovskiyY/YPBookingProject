@@ -3,9 +3,13 @@ from core.clients.api_client import APIClient
 import pytest
 from faker import Faker
 
+
 @pytest.fixture(scope="session")
 def api_client():
     client = APIClient()
+    client.auth()
+    return client
+
 
 @pytest.fixture()
 def booking_dates():
@@ -16,6 +20,7 @@ def booking_dates():
         "checkin": checkin_date.strftime('%Y-%m-%d'),
         "checkout": checkout_date.strftime('%Y-%m-%d')
     }
+
 
 def generate_random_booking_data(booking_dates):
     faker = Faker()
