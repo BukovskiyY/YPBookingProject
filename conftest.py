@@ -21,7 +21,7 @@ def booking_dates():
         "checkout": checkout_date.strftime('%Y-%m-%d')
     }
 
-
+@pytest.fixture()
 def generate_random_booking_data(booking_dates):
     faker = Faker()
     firstname = faker.first_name()
